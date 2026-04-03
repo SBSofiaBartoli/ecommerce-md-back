@@ -11,11 +11,6 @@ import { RolesGuard } from "src/common/guard/roles.guard";
 export class CategoryController {
     constructor (private readonly categoryService: CategoryService) {};
 
-    @Get('seeder')
-    seeder() {
-        return this.categoryService.seeder();
-    };
-
     @ApiOperation({ summary: 'Get categories' })
     @Get()
     getCategoriesController() {

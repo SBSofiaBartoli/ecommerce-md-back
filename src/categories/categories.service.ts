@@ -9,14 +9,6 @@ import { CategoryDto } from "./dto/category.dto";
 export class CategoryService {
     constructor (@InjectRepository(Category) private readonly categoriesRepository: Repository<Category>) {};
 
-    seeder() {
-        const categoriesMap: Set<string> = new Set(data.map(product => product.category));
-        const categoriesArray: string[] = Array.from(categoriesMap);
-        const categories = categoriesArray.map(category => ({ name: category, }));
-        this.categoriesRepository.upsert(categories, ['name']);
-        return 'Categories added';
-    }
-
     async getCategories() {
         try {
             const categories = await this.categoriesRepository.find();
