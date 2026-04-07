@@ -1,12 +1,21 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString } from "class-validator";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CategoryDto {
-    @ApiProperty({
-        example: 'Headphones',
-        description: 'It must contain a new product category'
-    })
-    @IsNotEmpty()
-    @IsString()
-    name: string;
+  @ApiProperty({
+    example: "Tote",
+    description: "Category name (e.g. Tote, Clutch, Crossbody, Mochila)",
+  })
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
+  @ApiPropertyOptional({
+    example:
+      "Bolsos de cuero grandes con asas largas, ideales para el día a día.",
+    description: "Brief category description",
+  })
+  @IsOptional()
+  @IsString()
+  description?: string;
 }
